@@ -1,1 +1,6 @@
-console.log("Huyaa");
+var divHeader = new Vue({
+    el : '#divHeader',
+    data : {
+        
+    }
+});
