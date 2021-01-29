@@ -3,6 +3,7 @@ from pathlib import Path
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
+from django.core import serializers
 
 from .models import Kaligrafi
 from .models import Mahasiswa
@@ -22,6 +23,15 @@ def home_page(request):
     return render(request, 'home/home_page.html', context);
 
 def test_rest(request):
-    mhs = Mahasiswa.objects.all().values()
-    mhs_list = list(mhs)
-    return JsonResponse(mhs_list, safe=False)
+    # mhs_all = Mahasiswa.objects.all().values()
+    mhs_ilkomp = Mahasiswa.objects.filter(prodi__contains='Ilmu Komputer').values()
+    jlh_mhs = Mahasiswa.objects.count();
+    context = {
+        "jlh" : jlh_mhs
+    }
+    res_data = list(mhs_ilkomp)
+    for x in res_data:
+        print(x['nama'])
+    # data = serialize('json', context)
+    return JsonResponse(context, safe=False)
+
