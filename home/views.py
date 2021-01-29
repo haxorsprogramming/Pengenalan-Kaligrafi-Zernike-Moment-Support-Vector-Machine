@@ -35,3 +35,10 @@ def test_rest(request):
     # data = serialize('json', context)
     return JsonResponse(context, safe=False)
 
+def mahasiswa_all(request):
+    data = {
+        "nama" : "aditia"
+    }
+    m = Mahasiswa.objects.create(nim='092312312',nama='Amira Balqis',alamat='kedah',prodi='Biologi')
+    m.save()
+    return JsonResponse(data, safe=False)
