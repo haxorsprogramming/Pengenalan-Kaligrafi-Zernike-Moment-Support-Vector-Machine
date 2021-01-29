@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.db import connection
 
 import mysql.connector
 import json
@@ -12,3 +13,4 @@ def login_page(request):
         'Developer' : 'Riswanda Ichsan Himawan'
     }
     return render(request, 'login/login_page.html', context);
+

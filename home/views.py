@@ -2,9 +2,10 @@ from django.views.decorators.csrf import csrf_exempt
 from pathlib import Path
 from django.shortcuts import render
 from django.http import HttpResponse
-import matplotlib.pyplot as plt
+from django.http import JsonResponse
 
 from .models import Kaligrafi
+from .models import Mahasiswa
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -19,4 +20,8 @@ def home_page(request):
         'kaligrafi' : post
     }
     return render(request, 'home/home_page.html', context);
-    
+
+def test_rest(request):
+    mhs = Mahasiswa.objects.all().values()
+    mhs_list = list(mhs)
+    return JsonResponse(mhs_list, safe=False)
