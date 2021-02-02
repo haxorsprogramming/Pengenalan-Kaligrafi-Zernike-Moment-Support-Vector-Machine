@@ -28,8 +28,7 @@
                             <div class="auth-form-light text-left py-5 px-4 px-sm-5" id='login-app'>
                                 <div class="brand-logo" style='text-align:center;'>
                                     <img src="{% static "loginpage/images/bank.png" %}" alt="logo" style='width:150px; '>
-                                    <h3 style="font-weight:bold;margin-top:40px;">Sistem Pendukung Keputusan</h3>
-                                    <h4>Pemberian Kelayakan Kredit</h4>
+                                    <h3 style="font-weight:bold;margin-top:40px;">{{ judul }}</h3>
                                 </div>
                                 <div style='text-align:center;'>
                                     <h6 class="font-weight-light">Harap masuk untuk melanjutkan.</h6>
@@ -49,7 +48,8 @@
                                             </div>
                                             <div class="mt-2">
                                                 <div style='padding-top:12px;'>
-                                                    <h5 class="font-weight-light">&copy; <a href='http://haxors.or.id' target='new'></a></h5>
+                                                    <h5 class="font-weight-light">{{ developer }}<a href='http://haxors.or.id' target='new'></a></h5>
+                                                    <strong>Fakultas Sains dan Teknologi, Universitas Islam Negeri Sumatera Utara</strong>
                                                 </div>
                                             </div>
                                         </div>

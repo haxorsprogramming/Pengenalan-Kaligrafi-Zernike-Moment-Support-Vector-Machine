@@ -7,6 +7,7 @@ urlpatterns = [
     path('', home_app.home_page),
     path('admin/', admin.site.urls),
     path('login/', login_app.login_page),
+    path('login/proses', login_app.login_proses),
     path('test-rest/', home_app.test_rest),
     path('get/mahasiswa/all', home_app.mahasiswa_all)
 ]
