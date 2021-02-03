@@ -6,21 +6,26 @@ from django.views.decorators.csrf import csrf_exempt
 
 import mysql.connector
 import json
+import hashlib
+
+developer = "Riswanda Ichsan Himawan"
 
 # Create your views here.
 def login_page(request):
     context = {
         'judul' : 'Pengenalan pola jenis tulisan kaligrafi menggunakan metode Zernike Moment dan Support Vector Machine',
-        'developer' : 'Riswanda Ichsan Himawan'
+        'developer' : developer
     }
     return render(request, 'login/login_page.html', context);
 
 @csrf_exempt
 def login_proses(request):
-    username = request.POST.get("username")
-
+    username = request.POST.get('username')
+    password = request.POST.get('password')
+    pass_hash = hashlib.md5(password.encode("utf-8")).hexdigest() 
     context = {
         'username' : username,
-        'status' : 'sukses'
+        'status' : 'sukses',
+        'password_hash' : pass_hash
     }
     return JsonResponse(context, safe=False)

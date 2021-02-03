@@ -9,23 +9,18 @@ var loginApp = new Vue({
     loginAtc : function()
     {
       let username = document.querySelector('#txtUsername').value;
-      console.log(username);
-      let ds = {'username':username}
-      axios({
-        method : 'post',
-        url : rToLogin,
-        data : ds,
-        headers : {'Content-Type': 'multipart/form-data'}
-      }).then(function(res){
-        let dr = res.data;
-        console.log(dr);
+      let password = document.querySelector('#txtPassword').value;
+      let ds = {'username':username, 'password':password}
+      $.post(rToLogin, ds, function(data){
+        console.log(data);
       });
-      // axios.post(rToLogin, ds).then(function(res){
-      //   let dr = res.data;
-      //   console.log(dr);
-      // });
     }
   }
 });
-
+const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+$.ajaxSetup({
+  headers: {
+      'X-CSRF-TOKEN': csrftoken
+  }
+});
 document.querySelector('#txtUsername').focus();
