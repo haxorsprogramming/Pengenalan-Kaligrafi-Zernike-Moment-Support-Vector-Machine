@@ -17,7 +17,7 @@ def login_page(request):
         'judul' : judul,
         'developer' : developer
     }
-    return render(request, 'login/login_page.html', context);
+    return render(request, 'login/login_page.html', context)
 
 @csrf_exempt
 def login_proses(request):
