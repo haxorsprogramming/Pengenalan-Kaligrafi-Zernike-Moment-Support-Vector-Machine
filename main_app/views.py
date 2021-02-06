@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 
 # Create your views here.
-def main(request):
+def main_dash(request):
     context = {
         'data' : 'Riani'
     }

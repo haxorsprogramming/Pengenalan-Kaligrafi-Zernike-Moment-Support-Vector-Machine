@@ -9,7 +9,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('login/', login_app.login_page),
     path('login/proses', login_app.login_proses),
-    path('dashboard/', main_app.main),
+    path('dashboard/', main_app.main_dash),
     path('test-rest/', home_app.test_rest),
     path('get/mahasiswa/all', home_app.mahasiswa_all)
 ]
