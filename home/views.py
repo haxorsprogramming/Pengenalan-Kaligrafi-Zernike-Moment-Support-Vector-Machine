@@ -20,7 +20,7 @@ def home_page(request):
         'nilai' : '00',
         'kaligrafi' : post
     }
-    return render(request, 'home/home_page.html', context);
+    return render(request, 'home/home_page.html', context)
    
 def test_rest(request):
     # mhs_all = Mahasiswa.objects.all().values()
