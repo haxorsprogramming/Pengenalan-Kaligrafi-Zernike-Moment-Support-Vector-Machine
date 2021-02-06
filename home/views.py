@@ -25,7 +25,7 @@ def home_page(request):
 def test_rest(request):
     # mhs_all = Mahasiswa.objects.all().values()
     mhs_ilkomp = Mahasiswa.objects.filter(prodi__contains='Ilmu Komputer').values()
-    jlh_mhs = Mahasiswa.objects.count();
+    jlh_mhs = Mahasiswa.objects.count()
     context = {
         "jlh" : jlh_mhs
     }

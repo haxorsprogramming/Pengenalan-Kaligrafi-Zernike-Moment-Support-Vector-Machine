@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.http import JsonResponse
 
+from .models import User
+
 import json
 import hashlib
 
@@ -21,10 +23,20 @@ def login_page(request):
 def login_proses(request):
     username = request.POST.get('username')
     password = request.POST.get('password')
-    pass_hash = hashlib.md5(password.encode("utf-8")).hexdigest() 
+    pass_hash = hashlib.md5(password.encode("utf-8")).hexdigest()
+    total_user = User.objects.filter(username__contains=username).count()
+    if total_user > 0 :
+        data_user = User.objects.filter(username__contains=username).first()
+        password_db = data_user.password
+        if pass_hash == password_db:
+            status = 'success'
+        else:
+            status = 'wrong_password'
+    else:
+        status = 'no_user'
+
     context = {
         'username' : username,
-        'status' : 'sukses',
-        'password_hash' : pass_hash
+        'status' : status
     }
     return JsonResponse(context, safe=False)
