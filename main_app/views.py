@@ -7,3 +7,6 @@ def main_dash(request):
         'data' : 'Riani'
     }
     return render(request, 'dashboard/main.html', context)
+
+def beranda(request):
+    return render(request, 'dashboard/beranda.html');

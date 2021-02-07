@@ -10,6 +10,7 @@ urlpatterns = [
     path('login/', login_app.login_page),
     path('login/proses', login_app.login_proses),
     path('dashboard/', main_app.main_dash),
+    path('dashboard/beranda', main_app.beranda),
     path('test-rest/', home_app.test_rest),
     path('get/mahasiswa/all', home_app.mahasiswa_all)
 ]

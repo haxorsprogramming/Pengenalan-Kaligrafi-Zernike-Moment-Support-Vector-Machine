@@ -42,7 +42,7 @@
 
          </form>
          <ul class="navbar-nav navbar-right">
-         
+
            <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
              <img alt="image" src="{% static "/dasbor/img/avatar-1.png" %}" class="rounded-circle mr-1">
              <div class="d-sm-none d-lg-inline-block">Hi, </div></a>
@@ -54,17 +54,24 @@
            </li>
          </ul>
        </nav>
-       <div class="main-sidebar" id='divMenu'>
+       <div class="main-sidebar" id="divMenu">
         <aside id="sidebar-wrapper">
             <div class="sidebar-brand">
-              <a href="#!" style='height:30px;'>
+              <a href="#!" style="height:30px;">
               <img src="{% static "/dasbor/img/logo_uinsu.jpg" %}" style="width: 60px;">
               </a>
             </div>
             <div class="sidebar-brand sidebar-brand-sm">
               <a href="#!"></a>
             </div>
-            
+            <ul class="sidebar-menu" style="margin-top:20px;">
+              <li><a class="nav-link" href="#!" @click="berandaAtc()"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
+              <li><a class="nav-link" href="#!"><i class="fas fa-fingerprint"></i><span>Pengujian</span></a></li>
+              <li><a class="nav-link" href="#!"><i class="fas fa-book"></i><span>Data Kaligrafi</span></a></li>
+              <li><a class="nav-link" href="#!"><i class="fas fa-map"></i><span>History Pengujian</span></a></li>
+              <li><a class="nav-link" href="#!"><i class="fas fa-lightbulb"></i><span>Tentang Aplikasi</span></a></li>
+              <li><a class="nav-link" href="{{ BASE_URL }}"><i class="fas fa-sign-out-alt"></i> <span>LogOut</span></a></li>
+          </ul>
           </aside>
        </div>
 
@@ -72,12 +79,10 @@
        <div class="main-content">
          <section class="section">
            <div class="section-header">
-             <h1 id="capUtama"> Aplikasi Deteksi Pola Kaligrafi -</h1>
+             <h1 id="capUtama"> Aplikasi Deteksi Pola Kaligrafi - Beranda</h1>
            </div>
-           
-         <div id="divUtama">
 
-       </div>
+         <div id="divUtama"></div>
      </section>
 
      </div>
@@ -98,7 +103,7 @@
      <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
      <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-   
+
    <script src="{% static "/dasbor/stisla/js/scripts.js" %}"></script>
 
    <!-- Page Specific JS File -->
