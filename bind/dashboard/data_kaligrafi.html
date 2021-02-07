@@ -4,7 +4,7 @@
             <a href='#!' class='btn btn-lg btn-primary  btn-icon icon-left' @click='tambahMitraAtc'>
             <i class="fas fa-plus-circle"></i> Tambah Data</a>
         </div>
-        <div class="row" id='' style="padding-left:20px;margin-right:10px;">
+        <div class="row" id="" style="padding-left:20px;margin-right:10px;">
             <table id='tblMitra' class='table table-hover table-bordered table-stripped'>
                 <thead>
                     <tr>
@@ -21,12 +21,10 @@
                             <td>{{ kaligrafi.id }}</td>
                             <td>{{ kaligrafi.kd }}</td>
                             <td>{{ kaligrafi.nama }}</td>
-                            {% if kaligrafi.kd == '001' %}
-                                <td>1</td>
-                            {% else %}
-                                <td>No</td>
-                            {% endif %}           
-                            <td>No</td>
+                            <td>{{ kaligrafi.deks|slice:'0:250' }} ..</td>     
+                            <td>
+                                <a href="#!" class="btn btn-primary">Details</a>
+                            </td>
                         </tr>
                     {% endfor %}
                 </tbody>
