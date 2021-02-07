@@ -1,0 +1,49 @@
+<div id='divMitra'>
+    <div id='divListMitra'>
+        <div style='margin-bottom:15px;'>
+            <a href='#!' class='btn btn-lg btn-primary  btn-icon icon-left' @click='tambahMitraAtc'>
+            <i class="fas fa-plus-circle"></i> Tambah Data</a>
+        </div>
+        <div class="row" id='' style="padding-left:20px;margin-right:10px;">
+            <table id='tblMitra' class='table table-hover table-bordered table-stripped'>
+                <thead>
+                    <tr>
+                        <th>No</th>
+                        <th>Kode Kaligrafi</th>
+                        <th>Nama</th>
+                        <th>Deksripsi</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for kaligrafi in kaligrafi %}
+                        <tr>
+                            <td>{{ kaligrafi.id }}</td>
+                            <td>{{ kaligrafi.kd }}</td>
+                            <td>{{ kaligrafi.nama }}</td>
+                            {% if kaligrafi.kd == '001' %}
+                                <td>1</td>
+                            {% else %}
+                                <td>No</td>
+                            {% endif %}           
+                            <td>No</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div id="divTambahKaligrafi">
+        <div>
+            <a href="#!" class="btn btn-primary btn-icon icon-left">
+                <i class="fas fa-reply"></i> Kembali
+            </a>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt-3">
+            
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-6 col-12 mt-3">
+        </div>
+    </div>
+</div>
+

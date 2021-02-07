@@ -37,9 +37,7 @@
          <form class="form-inline mr-auto">
            <ul class="navbar-nav mr-3">
              <li><a href="#" data-toggle="sidebar" class="nav-link nav-link-lg"><i class="fas fa-bars"></i></a></li>
-
            </ul>
-
          </form>
          <ul class="navbar-nav navbar-right">
 
@@ -66,8 +64,8 @@
             </div>
             <ul class="sidebar-menu" style="margin-top:20px;">
               <li><a class="nav-link" href="#!" @click="berandaAtc()"><i class="fas fa-home"></i><span>Dashboard</span></a></li>
-              <li><a class="nav-link" href="#!"><i class="fas fa-fingerprint"></i><span>Pengujian</span></a></li>
-              <li><a class="nav-link" href="#!"><i class="fas fa-book"></i><span>Data Kaligrafi</span></a></li>
+              <li><a class="nav-link" href="#!" @click="pengujianAtc()"><i class="fas fa-fingerprint"></i><span>Pengujian</span></a></li>
+              <li><a class="nav-link" href="#!" @click="dataKaligrafiAtc()"><i class="fas fa-book"></i><span>Data Kaligrafi</span></a></li>
               <li><a class="nav-link" href="#!"><i class="fas fa-map"></i><span>History Pengujian</span></a></li>
               <li><a class="nav-link" href="#!"><i class="fas fa-lightbulb"></i><span>Tentang Aplikasi</span></a></li>
               <li><a class="nav-link" href="{{ BASE_URL }}"><i class="fas fa-sign-out-alt"></i> <span>LogOut</span></a></li>
@@ -76,18 +74,18 @@
        </div>
 
        <!-- Main Content -->
-       <div class="main-content">
+       <div class="main-content" id="divMain">
          <section class="section">
            <div class="section-header">
-             <h1 id="capUtama"> Aplikasi Deteksi Pola Kaligrafi - Beranda</h1>
+             <h1 id="capUtama"> Aplikasi Deteksi Pola Kaligrafi - [[ titleApps ]] </h1>
            </div>
 
-         <div id="divUtama"></div>
-     </section>
+            <div id="divUtama"></div>
+          </section>
 
      </div>
    </div>
-   <footer class="main-footer" id='divFooter'>Copyright &copy; </footer>
+   <footer class="main-footer" id='divFooter'>Copyright &copy; Riswanda Ichsan Himawan - Prodi Ilmu Komputer, Fakultas Sains dan Teknologi, Universitas Islam Negeri Sumatera Utara </footer>
    <!-- General JS Scripts -->
 
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>

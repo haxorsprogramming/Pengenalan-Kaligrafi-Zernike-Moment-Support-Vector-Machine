@@ -1,5 +1,6 @@
 // vue object 
 var divMenu = new Vue({
+    delimiters: ["[[", "]]"],
     el : '#divMenu',
     data : {
 
@@ -7,10 +8,36 @@ var divMenu = new Vue({
     methods : {
         berandaAtc : function()
         {
-            renderMenu('dashboard/beranda');
+            divMain.titleApps = "Beranda";
+            renderMenu("dashboard/beranda");
+        },
+        pengujianAtc : function()
+        {
+            divMain.titleApps = "Pengujian";
+            renderMenu("dashboard/pengujian");
+        },
+        dataKaligrafiAtc : function()
+        {
+            divMain.titleApps = "Data Kaligrafi";
+            renderMenu("dashboard/data-kaligrafi");
         }
     }
 });
+
+var divMain = new Vue({
+    delimiters: ["[[", "]]"],
+    el : '#divMain',
+    data : {
+        titleApps : 'Beranda'
+    },
+    methods : {
+
+    }
+});
+
+
+// inisialisasi & function 
+divMenu.berandaAtc();
 
 function renderMenu(halaman){
     progStart();
