@@ -30,19 +30,22 @@ def data_kaligrafi(request):
     return render(request, 'dashboard/data_kaligrafi.html', context)
 
 def test_zernike(request):
-    img = mahotas.imread('ladun/data_latih/naskhi_1.jpg')
+    file_gambar = 'naskhi_1.jpg'
+    img = mahotas.imread('ladun/data_latih/'+file_gambar)
     img = img[:, :, 0]
     img = mahotas.gaussian_filter(img, 1)
     img = (img > img.mean())
 
     # radius 
     radius = 10
-    mahotas.imsave('/ladun/data_zernike/proses.jpg', img)
+    mahotas.imsave('ladun/data_zernike/'+file_gambar, img)
     # computing zernike moments 
-    value = mahotas.features.zernike_moments(img, radius) 
-    print(value)
+    value_zernike = mahotas.features.zernike_moments(img, radius)
+    value_to_list = value_zernike.tolist() 
+    print(type(value_zernike))
+    print(value_zernike)
     context = {
-        'status' : 'sukses'
+        'status' : value_to_list
     }
     return JsonResponse(context, safe=False)
     

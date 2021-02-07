@@ -1,3 +1,5 @@
+{% load static %}
+
 <div id='divMitra'>
     <div id='divListMitra'>
         <div style='margin-bottom:15px;'>
@@ -11,6 +13,7 @@
                         <th>No</th>
                         <th>Kode Kaligrafi</th>
                         <th>Nama</th>
+                        <th>Sampel</th>
                         <th>Deksripsi</th>
                         <th>Aksi</th>
                     </tr>
@@ -21,6 +24,7 @@
                             <td>{{ kaligrafi.id }}</td>
                             <td>{{ kaligrafi.kd }}</td>
                             <td>{{ kaligrafi.nama }}</td>
+                            <td><img src="{{ BASE_URL }}ladun/data_sampel/{{ kaligrafi.kd }}.jpg" style="width:200px;"></td>
                             <td>{{ kaligrafi.deks|slice:'0:250' }} ..</td>     
                             <td>
                                 <a href="#!" class="btn btn-primary">Details</a>
