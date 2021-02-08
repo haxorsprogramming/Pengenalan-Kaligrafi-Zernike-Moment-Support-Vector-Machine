@@ -1,13 +1,15 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-
 from .models import Class_Kaligrafi
-
+from django.views.decorators.csrf import csrf_exempt
 import mahotas 
 import numpy as np 
 from pylab import gray, imshow, show 
 import os 
 import matplotlib.pyplot as plt 
+from django.core.files.storage import FileSystemStorage
+from django.conf import settings
+
 
 # Create your views here.
 def main_dash(request):
@@ -28,6 +30,28 @@ def data_kaligrafi(request):
         'kaligrafi' : kaligrafi
     }
     return render(request, 'dashboard/data_kaligrafi.html', context)
+
+@csrf_exempt
+def test_upload(request):
+    file_object = request.FILES['foto']
+    file_name = file_object.name
+    nama_gambar = "001_01.jpg"
+    with open("ladun/data_pengujian/" + nama_gambar, 'wb+') as f:
+        for chunk in file_object.chunks():
+            f.write(chunk)
+    img_uji = mahotas.imread('ladun/data_pengujian/'+nama_gambar)
+    img_uji = img_uji[:,:,0]
+    img_uji = mahotas.gaussian_filter(img_uji, 1)
+    img_uji = (img_uji > img_uji.mean())
+    radius = 10
+    mahotas.imsave('ladun/data_zernike/'+nama_gambar, img_uji)
+    value_zernike = mahotas.features.zernike_moments(img_uji, radius)
+    value_to_list = value_zernike.tolist()
+    context = {
+        'nama_file' : file_name,
+        'nilai_zernike' : value_to_list
+    }
+    return JsonResponse(context, safe=False)
 
 def test_zernike(request):
     file_gambar = '004_1.jpg'
