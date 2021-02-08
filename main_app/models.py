@@ -6,3 +6,7 @@ class Class_Kaligrafi(models.Model):
     nama = models.CharField(max_length=150)
     deks = models.TextField()
     
+class Nilai_Data_Latih(models.Model):
+    kd_class = models.CharField(max_length=150)
+    node = models.IntegerField()
+    value = models.FloatField()

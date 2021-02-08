@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 
+from .models import Nilai_Data_Latih
 
 # Create your views here.
 def main_dash(request):
@@ -59,20 +60,27 @@ def test_zernike(request):
     img = img[:, :, 0]
     img = mahotas.gaussian_filter(img, 1)
     img = (img > img.mean())
-
+    kd = "004"
     # radius 
     radius = 10
     mahotas.imsave('ladun/data_zernike/'+file_gambar, img)
     # computing zernike moments 
     value_zernike = mahotas.features.zernike_moments(img, radius)
     value_to_list = value_zernike.tolist()
-    context = {
-        'status' : value_to_list,
-    }
+    panjang = len(value_to_list)
     awal = 0
+    no = 1
     for x in value_to_list:
         awal = awal + x
-        print(x)
-    print(awal)
+        d = Nilai_Data_Latih.objects.create(kd_class=kd, node=no, value=awal)
+        d.save()
+        no += 1
+
+    context = {
+        'status' : value_to_list,
+        'panjang' : panjang,
+        'total' : awal
+    }
+    # print(awal)
     return JsonResponse(context, safe=False)
     
