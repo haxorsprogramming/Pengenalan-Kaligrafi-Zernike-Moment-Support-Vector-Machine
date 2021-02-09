@@ -33,7 +33,7 @@ def pengujian(request):
 @csrf_exempt
 def proses_uji(request):
     dataImg = request.POST.get("citraData")
-    format, imgstr = dataImg.split(';base64,')
+    format, imgstr = dataImg.split(";base64,")
     dataDecode = ContentFile(base64.b64decode(imgstr))
     # imgdata = base64.b64decode(dataImg)
     imgRandom = get_random_string(10)
@@ -42,11 +42,21 @@ def proses_uji(request):
     with open("ladun/data_pengujian/" + nama_gambar, "wb+") as f:
         for chunk in dataDecode.chunks():
             f.write(chunk)
-    citra_save = Pengujian_Citra.objects.create(kd_uji=imgRandom,nama_pengujian='Amira Balqis',waktu_pengujian=now,base_svm_final='0.1111',hasil_final="001")
+    citra_save = Pengujian_Citra.objects.create(kd_uji=imgRandom, nama_pengujian='Pengujian Citra', waktu_pengujian=now, base_svm_final='0.1111', hasil_final="001")
     citra_save.save()
+    # start perhitungan zernike
+    img_uji = mahotas.imread("ladun/data_pengujian/" + nama_gambar)
+    img_uji = img_uji[:,:,0]
+    img_uji = mahotas.gaussian_filter(img_uji, 1)
+    img_uji = (img_uji > img_uji.mean())
+    radius = 10
+    mahotas.imsave('ladun/data_zernike/'+nama_gambar, img_uji)
+    value_zernike = mahotas.features.zernike_moments(img_uji, radius)
+    value_to_list = value_zernike.tolist()
     context = {
         'status' : 'sukses',
-        'dataCitra' : dataImg
+        'dataCitra' : nama_gambar,
+        'zernikeValue' : value_to_list
     }
     return JsonResponse(context, safe=False)
 
