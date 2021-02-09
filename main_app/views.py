@@ -14,6 +14,7 @@ from django.core.files.base import ContentFile
 from .models import Nilai_Data_Latih
 from django.utils.crypto import get_random_string
 import datetime
+from stegano import lsb
 
 from .models import Pengujian_Citra
 
@@ -45,6 +46,7 @@ def proses_uji(request):
     citra_save = Pengujian_Citra.objects.create(kd_uji=imgRandom, nama_pengujian='Pengujian Citra', waktu_pengujian=now, base_svm_final='0.1111', hasil_final="001")
     citra_save.save()
     # start perhitungan zernike
+    data_secret = lsb.reveal("ladun/data_pengujian/" + nama_gambar)
     img_uji = mahotas.imread("ladun/data_pengujian/" + nama_gambar)
     img_uji = img_uji[:,:,0]
     img_uji = mahotas.gaussian_filter(img_uji, 1)
@@ -56,7 +58,8 @@ def proses_uji(request):
     context = {
         'status' : 'sukses',
         'dataCitra' : nama_gambar,
-        'zernikeValue' : value_to_list
+        'zernikeValue' : value_to_list,
+        'secret' : data_secret
     }
     return JsonResponse(context, safe=False)
 
