@@ -43,8 +43,7 @@ def proses_uji(request):
     with open("ladun/data_pengujian/" + nama_gambar, "wb+") as f:
         for chunk in dataDecode.chunks():
             f.write(chunk)
-    citra_save = Pengujian_Citra.objects.create(kd_uji=imgRandom, nama_pengujian='Pengujian Citra', waktu_pengujian=now, base_svm_final='0.1111', hasil_final="001")
-    citra_save.save()
+    
     # start perhitungan zernike
     data_secret = lsb.reveal("ladun/data_pengujian/" + nama_gambar)
     img_uji = mahotas.imread("ladun/data_pengujian/" + nama_gambar)
@@ -55,6 +54,8 @@ def proses_uji(request):
     mahotas.imsave('ladun/data_zernike/'+nama_gambar, img_uji)
     value_zernike = mahotas.features.zernike_moments(img_uji, radius)
     value_to_list = value_zernike.tolist()
+    citra_save = Pengujian_Citra.objects.create(kd_uji=imgRandom, nama_pengujian='Pengujian Citra', waktu_pengujian=now, base_svm_final='0', hasil_final=data_secret)
+    citra_save.save()
     context = {
         'status' : 'sukses',
         'dataCitra' : nama_gambar,

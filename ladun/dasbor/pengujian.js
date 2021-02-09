@@ -72,10 +72,8 @@ var divPengujian = new Vue({
                 var diwaniData = [2.1,2.5,2.3,2.9,2,4];
                 var diwaniJaliData = [5.6,5.2,5.4,5.8,5.3];
                 var judulData = [2,4,3,6,7];
-                console.log(nilaiEkstraksi);
                 for(i=0; i < 25; i++){
                     let nilaiAwal = zernikeValue[i];
-                    console.log(nilaiEkstraksi[i]);
                     dataChart.addRows([[judulData[i], nilaiEkstraksi[i], naskhiData[i], tsulutsData[i], diwaniData[i], diwaniJaliData[i]]]);
 
                 }
