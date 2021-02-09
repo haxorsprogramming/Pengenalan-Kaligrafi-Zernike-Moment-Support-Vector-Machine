@@ -13,10 +13,13 @@ var divPengujian = new Vue({
             let ds = {'citraData':citraData}
             $.post(rToProses, ds, function(data){
                 console.log(data);
+                $("#divHasilEkstraksi").show();
             });
         }
     }
 });
+
+$('#divHasilEkstraksi').hide();
 
 function setImg(){
     var citraInput = document.querySelector('#txtFoto');

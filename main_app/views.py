@@ -10,8 +10,12 @@ import os
 import matplotlib.pyplot as plt 
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
-
+from django.core.files.base import ContentFile
 from .models import Nilai_Data_Latih
+from django.utils.crypto import get_random_string
+import datetime
+
+from .models import Pengujian_Citra
 
 # Create your views here.
 def main_dash(request):
@@ -29,11 +33,17 @@ def pengujian(request):
 @csrf_exempt
 def proses_uji(request):
     dataImg = request.POST.get("citraData")
-    imgdata = base64.b64decode(dataImg)
-    nama_gambar = "hasil_upload.jpg"
+    format, imgstr = dataImg.split(';base64,')
+    dataDecode = ContentFile(base64.b64decode(imgstr))
+    # imgdata = base64.b64decode(dataImg)
+    imgRandom = get_random_string(10)
+    nama_gambar = imgRandom+".png"
+    now = datetime.datetime.now()
     with open("ladun/data_pengujian/" + nama_gambar, "wb+") as f:
-        for chunk in imgdata.chunks():
+        for chunk in dataDecode.chunks():
             f.write(chunk)
+    citra_save = Pengujian_Citra.objects.create(kd_uji=imgRandom,nama_pengujian='Amira Balqis',waktu_pengujian=now,base_svm_final='0.1111',hasil_final="001")
+    citra_save.save()
     context = {
         'status' : 'sukses',
         'dataCitra' : dataImg
