@@ -81,6 +81,6 @@ def test_zernike(request):
         'panjang' : panjang,
         'total' : awal
     }
-    # print(awal)
+    
     return JsonResponse(context, safe=False)
     
