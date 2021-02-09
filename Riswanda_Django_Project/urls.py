@@ -12,6 +12,7 @@ urlpatterns = [
     path('dashboard/', main_app.main_dash),
     path('dashboard/beranda', main_app.beranda),
     path('dashboard/pengujian', main_app.pengujian),
+    path('dashboard/proses-uji', main_app.proses_uji),
     path('dashboard/data-kaligrafi', main_app.data_kaligrafi),
     path('test/zernike', main_app.test_zernike),
     path('test/upload', main_app.test_upload),

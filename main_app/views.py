@@ -3,8 +3,9 @@ from django.http import JsonResponse
 from .models import Class_Kaligrafi
 from django.views.decorators.csrf import csrf_exempt
 import mahotas 
+import base64
 import numpy as np 
-from pylab import gray, imshow, show 
+from pylab import gray, imshow, show
 import os 
 import matplotlib.pyplot as plt 
 from django.core.files.storage import FileSystemStorage
@@ -15,7 +16,7 @@ from .models import Nilai_Data_Latih
 # Create your views here.
 def main_dash(request):
     context = {
-        'data' : 'Riani'
+        'status' : 'sukses'
     }
     return render(request, 'dashboard/main.html', context)
 
@@ -24,6 +25,20 @@ def beranda(request):
 
 def pengujian(request):
     return render(request, 'dashboard/pengujian.html')
+
+@csrf_exempt
+def proses_uji(request):
+    dataImg = request.POST.get("citraData")
+    imgdata = base64.b64decode(dataImg)
+    nama_gambar = "hasil_upload.jpg"
+    with open("ladun/data_pengujian/" + nama_gambar, "wb+") as f:
+        for chunk in imgdata.chunks():
+            f.write(chunk)
+    context = {
+        'status' : 'sukses',
+        'dataCitra' : dataImg
+    }
+    return JsonResponse(context, safe=False)
 
 def data_kaligrafi(request):
     kaligrafi = Class_Kaligrafi.objects.all().values()
@@ -37,10 +52,10 @@ def test_upload(request):
     file_object = request.FILES['foto']
     file_name = file_object.name
     nama_gambar = "001_01.jpg"
-    with open("ladun/data_pengujian/" + nama_gambar, 'wb+') as f:
+    with open("ladun/data_pengujian/" + nama_gambar, "wb+") as f:
         for chunk in file_object.chunks():
             f.write(chunk)
-    img_uji = mahotas.imread('ladun/data_pengujian/'+nama_gambar)
+    img_uji = mahotas.imread("ladun/data_pengujian/" + nama_gambar)
     img_uji = img_uji[:,:,0]
     img_uji = mahotas.gaussian_filter(img_uji, 1)
     img_uji = (img_uji > img_uji.mean())
@@ -81,6 +96,6 @@ def test_zernike(request):
         'panjang' : panjang,
         'total' : awal
     }
-    
+
     return JsonResponse(context, safe=False)
     
