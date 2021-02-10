@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 import mahotas 
 import base64
 import numpy as np 
-from pylab import gray, imshow, show
+
 import os 
 import matplotlib.pyplot as plt 
 from django.core.files.storage import FileSystemStorage
