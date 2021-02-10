@@ -71,6 +71,12 @@ def data_kaligrafi(request):
     }
     return render(request, 'dashboard/data_kaligrafi.html', context)
 
+def data_pengujian(request):
+    context = {
+        'status' : 'sukses'
+    }
+    
+
 @csrf_exempt
 def test_upload(request):
     file_object = request.FILES['foto']
@@ -120,6 +126,5 @@ def test_zernike(request):
         'panjang' : panjang,
         'total' : awal
     }
-
     return JsonResponse(context, safe=False)
     
