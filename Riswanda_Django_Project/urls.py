@@ -14,7 +14,7 @@ urlpatterns = [
     path('dashboard/pengujian', main_app.pengujian),
     path('dashboard/proses-uji', main_app.proses_uji),
     path('dashboard/data-kaligrafi', main_app.data_kaligrafi),
-    path('dashboard/history-pengujian', main_app.data_pengujian),
+    path('dashboard/history-pengujian', main_app.history_pengujian),
     path('test/zernike', main_app.test_zernike),
     path('test/upload', main_app.test_upload),
     path('test-rest/', home_app.test_rest),

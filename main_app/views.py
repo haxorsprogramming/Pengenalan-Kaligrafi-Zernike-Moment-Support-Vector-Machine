@@ -72,11 +72,11 @@ def data_kaligrafi(request):
     }
     return render(request, 'dashboard/data_kaligrafi.html', context)
 
-def data_pengujian(request):
+def history_pengujian(request):
     context = {
         'status' : 'sukses'
     }
-    
+    return render(request, 'dashboard/history-pengujian.html', context)
 
 @csrf_exempt
 def test_upload(request):

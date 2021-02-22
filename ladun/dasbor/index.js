@@ -20,6 +20,11 @@ var divMenu = new Vue({
         {
             divMain.titleApps = "Data Kaligrafi";
             renderMenu("dashboard/data-kaligrafi");
+        },
+        historyPengujianAtc : function()
+        {
+            divMain.titleApps = "History Pengujian";
+            renderMenu("dashboard/history-pengujian");
         }
     }
 });
