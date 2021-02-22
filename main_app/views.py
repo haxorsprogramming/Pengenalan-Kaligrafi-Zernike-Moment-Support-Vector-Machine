@@ -51,6 +51,7 @@ def proses_uji(request):
     img_uji = mahotas.gaussian_filter(img_uji, 1)
     img_uji = (img_uji > img_uji.mean())
     radius = 10
+    
     mahotas.imsave('ladun/data_zernike/'+nama_gambar, img_uji)
     value_zernike = mahotas.features.zernike_moments(img_uji, radius)
     value_to_list = value_zernike.tolist()
