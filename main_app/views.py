@@ -104,8 +104,9 @@ def test_upload(request):
     }
     return JsonResponse(context, safe=False)
 
+@csrf_exempt
 def test_zernike(request):
-    file_gambar = '004_1.jpg'
+    file_gambar = 'naskhi.png'
     img = mahotas.imread('ladun/data_latih/'+file_gambar)
     img = img[:, :, 0]
     img = mahotas.gaussian_filter(img, 1)

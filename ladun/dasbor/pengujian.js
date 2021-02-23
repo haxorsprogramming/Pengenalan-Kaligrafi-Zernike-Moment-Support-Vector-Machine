@@ -61,7 +61,7 @@ var divPengujian = new Vue({
 
                 var dataChart = new google.visualization.DataTable();
                 dataChart.addColumn('number', 'Dataset');
-                dataChart.addColumn('number', 'Pengujian');
+                // dataChart.addColumn('number', 'Pengujian');
                 dataChart.addColumn('number', 'Naskhi');
                 dataChart.addColumn('number', 'Tsuluts');
                 dataChart.addColumn('number', 'Diwani');
@@ -74,7 +74,7 @@ var divPengujian = new Vue({
                 var judulData = [2,4,3,6,7];
                 for(i=0; i < 25; i++){
                     let nilaiAwal = zernikeValue[i];
-                    dataChart.addRows([[judulData[i], nilaiEkstraksi[i], naskhiData[i], tsulutsData[i], diwaniData[i], diwaniJaliData[i]]]);
+                    dataChart.addRows([[judulData[i], naskhiData[i], tsulutsData[i], diwaniData[i], diwaniJaliData[i]]]);
 
                 }
                 var options = {
