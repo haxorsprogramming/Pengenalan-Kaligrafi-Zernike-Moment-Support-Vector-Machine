@@ -1,0 +1,108 @@
+{% load static %}
+
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+   <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+   <title>Dashboard</title>
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <!-- General CSS Files -->
+   <link href="https://fonts.googleapis.com/css?family=Nunito+Sans&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static "/dasbor/stisla/css/bootstrap.min.css" %}">
+  <link rel="stylesheet" href="https://demo.getstisla.com/assets/modules/fontawesome/css/all.min.css">
+  <link rel="stylesheet" href="{% static "/dasbor/stisla/css/iziToast.min.css" %}">
+  <!-- CSS Libraries -->
+  <link rel="stylesheet" href="{% static "/dasbor/stisla/css/jqvmap.min.css" %}">
+  <link rel="stylesheet" href="{% static "/dasbor/stisla/css/summernote-bs4.css" %}">
+  <link rel="stylesheet" href="{% static "/dasbor/stisla/css/owl.carousel.min.css" %}">
+  <link rel="stylesheet" href="{% static "/dasbor/stisla/css/datatables.min.css" %}">
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="//cdn.datatables.net/1.10.23/css/jquery.dataTables.min.css"/>
+  <!-- Template CSS -->
+  <link rel="stylesheet" href="{% static "/dasbor/stisla/css/style.css" %}">
+  <link rel="stylesheet" href="{% static "/dasbor/stisla/css/nadharesto.css" %}">
+  <link rel="stylesheet" href="{% static "/dasbor/stisla/css/components.css" %}">
+  <script src="https://www.gstatic.com/charts/loader.js"></script>
+  <script src='https://unpkg.com/nprogress@0.2.0/nprogress.js'></script>
+  <link rel="stylesheet" href="{% static "/dasbor/nProg/nprogress.css" %}"/>
+
+ </head>
+
+ <body style="font-family: 'Nunito Sans';">
+   <div id="app">
+     
+
+{% load static %}
+{% csrf_token %}
+<div class="container" id="divPengujian">
+  <div class="row">
+    <div class="card-body">
+      <div class="summary">
+        <div class="summary-info">
+          <h4>[[ titleForm ]]</h4>
+          <img src="https://s3-id-jkt-1.kilatstorage.id/nadhamedia/set_img.png" style="width:30%;" id="txtPreviewUpload">
+          <div class="text-muted">Silahkan input citra</div>
+          <input type="file" id="txtFoto" onchange="setImg()">
+          <div style="margin-top:20px;">
+            <a href="#!" class="btn btn-primary btn-lg" @click="mulaiAnalisaAtc()">Mulai analisa citra</a>
+          </div>
+
+            <div id="divHasilEkstraksi" style="margin-top:20px;">
+            <hr/>
+                <h6>Hasil Ekstraksi Citra</h6>
+                <div class="row">
+                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                     <img id="txtCitraZernike" style="width:80%;"><br/>
+                     Data ekstraksi zernike
+                     </div>
+                     <div class="col-lg-6 col-md-6 col-sm-6 col-12">
+                     <div id="scatter_top_x"></div>
+                     SVM Plot
+                     </div>
+                </div>
+                <div class="row" style="text-align:center;">
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                    <h4>Hasil pengenalan jenis kaligrafi adalah </h4>
+                    <h2>[[ jenisKaligrafi ]]</h2>
+                    </div>
+                    
+                </div>
+            </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+ 
+   </div>
+   <footer class="main-footer" id='divFooter'>Copyright &copy; Riswanda Ichsan Himawan - Prodi Ilmu Komputer, Fakultas Sains dan Teknologi, Universitas Islam Negeri Sumatera Utara </footer>
+   <!-- General JS Scripts -->
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+   <script src="{% static "/dasbor/stisla/js/popper.js" %}"></script>
+   <script src="{% static "/dasbor/stisla/js/bootstrap.min.js" %}"></script>
+   <script src="{% static "/dasbor/stisla/js/jquery.nicescroll.min.js" %}"></script>
+   <script src="{% static "/dasbor/stisla/js/moment.min.js" %}"></script>
+   <script src="{% static "/dasbor/stisla/js/stisla.js" %}"></script>
+
+      <!-- JS Libraries -->
+     <script src="{% static "/dasbor/stisla/js/datatables.min.js" %}"></script>
+     <script src="{% static "/dasbor/stisla/js/iziToast.min.js" %}"></script>
+     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+     <script src="https://s3-id-jkt-1.kilatstorage.id/ebunga/ebunga-cdn/js-lib/axios/axios.min.js"></script>
+     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script src="{% static "/dasbor/stisla/js/scripts.js" %}"></script>
+    <script src="//cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+   <!-- Page Specific JS File -->
+   <script>
+     const server = "{{ BASE_URL }}";
+   </script>
+   <script src="{% static "/dasbor/index.js" %}"></script>
+   <script src="{% static "/dasbor/pengujian.js" %}"></script>
+
+ </body>
+ </html>

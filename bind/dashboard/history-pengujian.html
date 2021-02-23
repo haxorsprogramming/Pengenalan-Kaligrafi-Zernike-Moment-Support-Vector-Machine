@@ -11,8 +11,16 @@
   <tr>
     <td>{{ pengujian.kd_uji }}</td>
     <td>{{ pengujian.waktu_pengujian }}</td>
-    <td>no</td>
-    <td>no</td>
+    <td><img src="{{ BASE_URL }}ladun/data_pengujian/{{ pengujian.kd_uji }}.png" style="width:100px;"></td>
+    {% if pengujian.hasil_final == '001' %}
+    <td>Naskhi</td>
+    {% elif pengujian.hasil_final == '002' %}
+    <td>Tsuluts</td>
+    {% elif pengujian.hasil_final == '003' %}
+    <td>Diwani</td>
+    {% else %}
+    <td>Diwani Jali</td>
+    {% endif %}
   </tr>
   {% endfor %}
 </table>

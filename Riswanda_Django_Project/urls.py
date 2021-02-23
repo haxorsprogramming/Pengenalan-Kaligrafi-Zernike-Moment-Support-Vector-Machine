@@ -6,6 +6,7 @@ from main_app import views as main_app
 
 urlpatterns = [
     path('', home_app.home_page),
+    path('pengujian-depan', home_app.pengujian_depan),
     path('admin/', admin.site.urls),
     path('login/', login_app.login_page),
     path('login/proses', login_app.login_proses),

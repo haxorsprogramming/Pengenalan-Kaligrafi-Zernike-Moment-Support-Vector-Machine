@@ -21,7 +21,13 @@ def home_page(request):
         'kaligrafi' : post
     }
     return render(request, 'home/home_page.html', context)
-   
+
+def pengujian_depan(request):
+    context = {
+        'status' : 'sukses'
+    }
+    return render(request, 'home/pengujian_depan.html', context);
+
 def test_rest(request):
     # mhs_all = Mahasiswa.objects.all().values()
     mhs_ilkomp = Mahasiswa.objects.filter(prodi__contains='Ilmu Komputer').values()
