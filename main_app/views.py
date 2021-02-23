@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import JsonResponse
-from .models import Class_Kaligrafi
+
 from django.views.decorators.csrf import csrf_exempt
 import mahotas 
 import base64
@@ -11,12 +11,14 @@ import matplotlib.pyplot as plt
 from django.core.files.storage import FileSystemStorage
 from django.conf import settings
 from django.core.files.base import ContentFile
-from .models import Nilai_Data_Latih
+
 from django.utils.crypto import get_random_string
 import datetime
 from stegano import lsb
 
 from .models import Pengujian_Citra
+from .models import Nilai_Data_Latih
+from .models import Class_Kaligrafi
 
 # Create your views here.
 def main_dash(request):
@@ -73,8 +75,10 @@ def data_kaligrafi(request):
     return render(request, 'dashboard/data_kaligrafi.html', context)
 
 def history_pengujian(request):
+    data_pengujian = Pengujian_Citra.objects.all().values()
     context = {
-        'status' : 'sukses'
+        'status' : 'sukses',
+        'data_pengujian' : data_pengujian
     }
     return render(request, 'dashboard/history-pengujian.html', context)
 

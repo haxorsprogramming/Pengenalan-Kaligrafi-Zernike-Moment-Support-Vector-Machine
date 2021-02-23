@@ -1,0 +1,22 @@
+<table class="table" id="tblHistoryPengujian">
+  <thead>
+    <tr>
+      <th>Kode Pengujian</th>
+      <th>Waktu Uji</th>
+      <th>Citra</th>
+      <th>Hasil</th>
+    </tr>
+  </thead>
+  {% for pengujian in data_pengujian %}
+  <tr>
+    <td>{{ pengujian.kd_uji }}</td>
+    <td>{{ pengujian.waktu_pengujian }}</td>
+    <td>no</td>
+    <td>no</td>
+  </tr>
+  {% endfor %}
+</table>
+
+<script>
+    $('#tblHistoryPengujian').dataTable();
+</script>
